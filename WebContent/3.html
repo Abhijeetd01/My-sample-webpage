@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<body>
+<meta charset="ISO-8859-1">
+<br><br>
+<title>Cab Booking</title>
+<center><h1>Welcome to instant cab booking service</h1></center>
+<marquee>Please fill up the following details below..</marquee>
+</body>
+<!--------------------------------------------------------Enter CSS code here---------------------------------------------------------->
+<style>@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.42em;
+  color:#A7A1AE;
+  background-color:#1F2739;
+}
+
+h1 {
+  font-size:3em; 
+  font-weight: 300;
+  line-height:1em;
+  text-align: center;
+  color: #4DC3FA;
+}
+
+h2 {
+  font-size:1em; 
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height:1em;
+  padding-bottom: 2em;
+  color: #FB667A;
+}
+
+h2 a {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #FB667A;
+  text-decoration: none;
+}
+
+.blue { color: #185875; }
+.yellow { color: #FFF842; }
+
+.container th h1 {
+	  font-weight: bold;
+	  font-size: 1em;
+  text-align: left;
+  color: #185875;
+}
+
+.container td {
+	  font-weight: normal;
+	  font-size: 1em;
+  -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+	   -moz-box-shadow: 0 2px 2px -2px #0E1119;
+	        box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.container {
+	  text-align: left;
+	  overflow: hidden;
+	  width: 80%;
+	  margin: 0 auto;
+  display: table;
+  padding: 0 0 8em 0;
+}
+
+.container td, .container th {
+	  padding-bottom: 2%;
+	  padding-top: 2%;
+  padding-left:2%;  
+}
+
+/* Background-color of the odd rows */
+.container tr:nth-child(odd) {
+	  background-color: #323C50;
+}
+
+/* Background-color of the even rows */
+.container tr:nth-child(even) {
+	  background-color: #2C3446;
+}
+
+.container th {
+	  background-color: #1F2739;
+}
+
+.container td:first-child { color: #FB667A; }
+
+.container tr:hover {
+   background-color: #464A52;
+-webkit-box-shadow: 0 6px 6px -6px #0E1119;
+	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
+	        box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.container td:hover {
+  background-color: #FFF842;
+  color: #403E10;
+  font-weight: bold;
+  
+  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+  transform: translate3d(6px, -6px, 0);
+  
+  transition-delay: 0s;
+	  transition-duration: 0.4s;
+	  transition-property: all;
+  transition-timing-function: line;
+}
+
+@media (max-width: 800px) {
+.container td:nth-child(4),
+.container th:nth-child(4) { display: none; }
+}
+
+</style>
+
+<!-- -------------------------------------------------Enter CSS code here------------------------------------------------------------- -->
+</head>
+<body>
+
+<form class="myForm" method="post" enctype="application/x-www-form-urlencoded" action="/html/codes/html_form_handler.cfm">
+<p>
+<label>
+Passenger Name:
+<input type="text" name="customer_name" required>
+<br><br>
+
+Contact No:
+<input type="tel" name="phone_number"><br><br>
+
+Email address:
+<input type="email" name="email_address"><br><br>
+
+Select Gender:
+<input type="radio" name="gen" value="M">MALE
+<input type="radio" name="gen" value="F">FEMALE
+<br><br>
+</p>
+</label>
+
+ 
+
+<fieldset>
+<legend>Which kind of cab do you require?</legend>
+<p><label class="choice"> <input type="radio" name="taxi" required value="car"> Car </label></p>
+<p><label class="choice"> <input type="radio" name="taxi" required value="van"> Van </label></p>
+<p><label class="choice"> <input type="radio" name="taxi" required value="tuktuk"> Tuk Tuk </label></p>
+</fieldset>
+
+<fieldset>
+<legend><b>Extras</b></legend>
+<p><label class="choice"> <input type="checkbox" name="extras" value="baby"> Baby Seat </label></p>
+<p><label class="choice"> <input type="checkbox" name="extras" value="wheelchair"> Wheel chair</label></p>
+<p><label class="choice"> <input type="checkbox" name="extras" value="tip"> Stock Tip </label></p>
+<p><label class="choice"> <input type="checkbox" name="extras" value="tip"> Beverages </label></p>
+<p><label class="choice"> <input type="checkbox" name="extras" value="tip"> Air Conditioning</label></p>
+<p><label class="choice"> <input type="checkbox" name="extras" value="tip"> Music</label></p>
+</fieldset>
+
+<p>
+<label>Pickup Date/Time(DD/MM/YYYY)
+<input type="datetime-local" name="pickup_time" required>
+</label>
+</p>
+	
+<p>
+<label>Pickup Place
+<select id="pickup_place" name="pickup_place">
+<option value="" selected="selected">Select One</option>
+<option value="office" >Taxi Office</option>
+<option value="town_hall" >Town Hall</option>
+<option value="telepathy" >We'll Guess!</option>
+</select>
+</label> 
+</p>
+
+<p>
+<label>Drop off Place
+<input type="text" name="dropoff_place" required list="destinations">
+</label>
+
+<datalist id="destinations">
+<option value="Airport">
+<option value="Beach">
+<option value="Fred Flinstone's House">
+</datalist>
+</p>
+
+<p>
+<label>Special Instructions
+<textarea name="comments" maxlength="500"></textarea>
+</label>
+</p>
+
+<p><button>Submit Booking</button></p>
+
+</form>
+<!-- ------------------------------------------------------------------------------------------------->
+<h2>Cabs and timings<a target="_blank"></a></h2>
+
+<table class="container">
+	<thead><tr>
+			<th><h1>Cabs</h1></th>
+			<th><h1>Booked</h1></th>
+			<th><h1>Available</h1></th>
+			<th><h1>Timings</h1></th></tr></thead>
+	<tbody><tr>
+			<td>Cab 01</td>
+			<td>9518</td>
+			<td>6369</td>
+			<td>08:30</td>
+		</tr>
+		<tr>
+			<td>Cab 02</td>
+			<td>7326</td>
+			<td>10437</td>
+			<td>09:00</td>
+		</tr>
+		<tr>
+			<td>Cab 03</td>
+			<td>4162</td>
+			<td>5327</td>
+			<td>09:30</td>
+		</tr>
+    <tr>
+			<td>Cab 04</td>
+			<td>3654</td>
+			<td>2961</td>
+			<td>10:00</td>
+		</tr>
+    <tr>
+			<td>Cab 05</td>
+			<td>2002</td>
+			<td>4135</td>
+			<td>12:40</td>
+		</tr>
+    <tr>
+			<td>cab 06</td>
+			<td>4623</td>
+			<td>3486</td>
+			<td>16:30</td>
+		</tr>
+		    <tr>
+			<td>cab 07</td>
+			<td>4623</td>
+			<td>1458</td>
+			<td>17:00</td>
+		</tr>
+	</tbody>
+</table>
+
+</body>
+</html>
